@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="shortcut icon" type="image/png" href="/icon.png" />
+    	<link rel="stylesheet" type="text/css" href="{% static 'speech/main.css' %}">
+    <link
+      href="https://fonts.googleapis.com/css?family=Poppins:400,500,600&display=swap"
+      rel="stylesheet"
+    />
+    <title>Hate Speech Detection</title>
+  </script>
+  </head>
+  <body>
+    <!-- TOP NAVIGATION -->
+    
+    <!-- <footer>
+      &copy; by Jonas Schmedtmann. Don't claim as your own :)
+    </footer> -->
+<h1>{{val}}</h1>
+<h1>Hate Speech Detection</h1>
+<form method="POST">
+	            {% csrf_token %}
+  
+  {% if script %}
+  <input type="text" name="name" class="question" id="nme" required autocomplete="off" />
+  <label for="nme"><span>What's your name?</span></label>
+  <textarea name="message" rows="2" class="question" id="msg" required autocomplete="off"></textarea>
+  <label for="msg"><span>Type The Message!!</span></label>
+  <input type="submit" value="Submit!" />
+
+  {% else %}
+  <textarea type="text" name="name" rows="2" class="question" id="nme"  style="background-color: #fff;color:{{color_property}};"/>{{name}}</textarea> 
+  <label for="nme"><span>What's your name?</span></label>
+  <textarea name="message" rows="2" class="question" id="msg"  style="background-color: #fff;color:{{color_property}};">{{mess}}</textarea>
+  <label for="msg"><span>Type The Message!!</span></label>
+  <input type="submit" value="Submit!" /> 
+  {% endif %}
+</form>  
+<script type="text/javascript">
+  document.querySelector('#change').addEventListener('click',function (){
+    document.querySelector('#nme').value=''
+    document.querySelector('#nme').label="What's your name?"
+    document.querySelector('#msg').value=""
+    document.querySelector('#msg').label="Type The Message!!"
+    
+  })
+</script>
+  </body>
+</html>
+
